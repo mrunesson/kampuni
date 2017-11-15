@@ -1,17 +1,23 @@
 package org.linuxalert.kampuni.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.immutables.value.Value;
+public class Item {
 
-import java.util.Optional;
+  private String name;
+  private String subName;
 
-@Value.Immutable
-@JsonSerialize(as = ImmutableItem.class)
-@JsonDeserialize(as = ImmutableItem.class)
-public interface Item {
+  public String getName() {
+    return name;
+  }
 
-  String name();
-  Optional<String> subName();
+  public void setName(String name) {
+    this.name = name;
+  }
 
+  public String getSubName() {
+    return subName;
+  }
+
+  public void setSubName(String subName) {
+    this.subName = subName;
+  }
 }

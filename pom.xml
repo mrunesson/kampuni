@@ -23,7 +23,6 @@
     <jersey.version>2.26</jersey.version>
     <hk.locator.version>2.5.0-b60</hk.locator.version>
     <jackson.version>2.9.2</jackson.version>
-    <immutables.version>2.6.1.alpha0-SNAPSHOT</immutables.version>
     <maven.compiler.target>9</maven.compiler.target>
     <maven.compiler.source>9</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -114,13 +113,6 @@
       <artifactId>jackson-databind</artifactId>
       <version>${jackson.version}</version>
     </dependency>
-
-    <dependency>
-      <groupId>org.immutables</groupId>
-      <artifactId>value</artifactId>
-      <version>${immutables.version}</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
 
 
@@ -136,21 +128,20 @@
           </descriptors>
           <finalName>service</finalName>
         </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
-        <configuration>
-          <annotationProcessorPaths>
-            <dependency>
-              <groupId>org.immutables</groupId>
-              <artifactId>value</artifactId>
-              <version>${immutables.version}</version>
-            </dependency>
-          </annotationProcessorPaths>
-        </configuration>
       </plugin>
     </plugins>
   </build>

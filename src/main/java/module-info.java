@@ -11,9 +11,5 @@ module org.linuxalert.kampuni {
   requires java.xml.bind;
   opens org.linuxalert.kampuni.model;
 
-  requires static java.xml.ws.annotation;
-  requires static org.immutables.value;
-  requires com.fasterxml.jackson.databind; // Workaround to accept @Generated in generated code. https://github.com/rzwitserloot/lombok/issues/1372
-
   exports org.linuxalert.kampuni;
 }
