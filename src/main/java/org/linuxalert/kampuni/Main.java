@@ -10,9 +10,12 @@ import static io.undertow.servlet.Servlets.servlet;
 
 public class Main {
 
+  private static final System.Logger LOGGER = System.getLogger(Main.class.getName());
   private static Undertow server;
 
   public static void main(String[] args) throws Exception {
+    LOGGER.log(System.Logger.Level.DEBUG, "Starting");
+    AssortmentService.getInstance(); // Ensure cache get populated.
     startContainer(8080);
   }
 

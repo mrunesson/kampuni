@@ -22,7 +22,10 @@
     <undertow.version>1.4.21.Final</undertow.version>
     <jersey.version>2.26</jersey.version>
     <hk.locator.version>2.5.0-b60</hk.locator.version>
-    <jackson.version>2.9.2</jackson.version>
+    <jackson.version>2.9.3</jackson.version>
+    <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+    <com.neovisionaries.nv-i18n.version>1.22</com.neovisionaries.nv-i18n.version>
+    <com.google.guava.version>23.6-jre</com.google.guava.version>
     <maven.compiler.target>9</maven.compiler.target>
     <maven.compiler.source>9</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,22 +41,12 @@
       <groupId>io.undertow</groupId>
       <artifactId>undertow-servlet</artifactId>
       <version>${undertow.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.jboss.spec.javax.annotation</groupId>
-          <artifactId>jboss-annotations-api_1.2_spec</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jboss.spec.javax.servlet</groupId>
-          <artifactId>jboss-servlet-api_3.1_spec</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
+      <version>${javax.servlet-api.version}</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
@@ -113,6 +106,24 @@
       <artifactId>jackson-databind</artifactId>
       <version>${jackson.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.neovisionaries</groupId>
+      <artifactId>nv-i18n</artifactId>
+      <version>${com.neovisionaries.nv-i18n.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${com.google.guava.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.0.2</version>
+    </dependency>
   </dependencies>
 
 
@@ -142,6 +153,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
+        <configuration>
+          <compilerArgs>
+            <arg>--add-modules</arg>
+            <arg>java.xml.bind</arg>
+          </compilerArgs>
+        </configuration>
       </plugin>
     </plugins>
   </build>
