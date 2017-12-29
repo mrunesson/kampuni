@@ -35,6 +35,7 @@ public class AssortmentService {
       instance = new AssortmentService();
       instance.updateCache();
       scheduler = Executors.newScheduledThreadPool(1);
+      // TODO: Base initial delay on lastUpdate
       scheduler.scheduleWithFixedDelay(() -> instance.updateCache(),
           1, 1, TimeUnit.DAYS );
     }

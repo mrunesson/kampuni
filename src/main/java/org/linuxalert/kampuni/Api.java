@@ -6,7 +6,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-@Path("/")
+@Path("/v1/")
 public class Api {
 
   private static final AssortmentService ASSORTMENT_SERVICE = AssortmentService.getInstance();
