@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kampuni
+spec:
+  selector:
+    app: kampuni
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: kampuni-deployment
+  labels:
+    app: kampuni
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: kampuni
+  template:
+    metadata:
+      labels:
+        app: kampuni
+    spec:
+      containers:
+      - name: kampuni
+        image: magru/kampuni:v0.1
+        ports:
+        - containerPort: 8080

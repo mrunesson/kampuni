@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: kampuni
-        image: magru/kampuni:lates
+        image: magru/kampuni:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
