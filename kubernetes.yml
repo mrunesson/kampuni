@@ -19,6 +19,7 @@ metadata:
     app: kampuni
 spec:
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: kampuni
@@ -29,6 +30,7 @@ spec:
     spec:
       containers:
       - name: kampuni
-        image: magru/kampuni:0.1
+        image: magru/kampuni:lates
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080

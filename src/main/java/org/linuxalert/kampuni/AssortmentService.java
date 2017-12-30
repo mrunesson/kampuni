@@ -83,7 +83,7 @@ public class AssortmentService {
     return new Result(items, lastUpdate);
   }
 
-  public Object getId(String id) {
+  public Result getId(String id) {
     return new Result(idIndex.getOrDefault(id, Set.of()), lastUpdate);
   }
 }
