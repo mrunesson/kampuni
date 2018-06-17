@@ -28,6 +28,7 @@ public class AssortmentService {
   private Collection<Item> items = List.of();
   private Map<String,Set<Item>> idIndex = Map.of();
   private LocalDateTime lastUpdate;
+  private LocalDateTime lastCheck;
   private AssortmentAdapter assortmentAdapter;
 
   public static synchronized AssortmentService getInstance() {
@@ -40,6 +41,14 @@ public class AssortmentService {
           1, 1, TimeUnit.DAYS );
     }
     return instance;
+  }
+
+  public boolean ready() {
+    return lastCheck != null;
+  }
+
+  public boolean health() {
+    return lastCheck.isAfter(lastCheck.minusHours(25));
   }
 
   private AssortmentService() {
@@ -76,6 +85,7 @@ public class AssortmentService {
       }
     });
     idIndex = freshIdIndex;
+    lastCheck = LocalDateTime.now();
     LOGGER.log(System.Logger.Level.DEBUG, "Cache is updated.");
   }
 

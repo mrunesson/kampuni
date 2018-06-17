@@ -1,6 +1,5 @@
 package org.linuxalert.kampuni;
 
-
 import org.linuxalert.kampuni.model.Result;
 
 import javax.ws.rs.GET;

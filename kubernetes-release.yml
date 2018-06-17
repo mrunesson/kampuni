@@ -16,7 +16,7 @@ metadata:
   name: kampuni-deployment
   labels:
     app: kampuni
-    version: v0.1.1
+    version: v0.1.2
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -27,9 +27,26 @@ spec:
     metadata:
       labels:
         app: kampuni
+        version: v0.1.2
     spec:
       containers:
       - name: kampuni
-        image: magru/kampuni:v0.1.1
+        image: magru/kampuni:v0.1.2
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /kampuni/status/health
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 30
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /kampuni/status/ready
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 5
+          failureThreshold: 3
