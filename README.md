@@ -28,7 +28,7 @@ Deployment of head of master is done with:
 kubernetes apply -f kubernetes-latest.yml
 ```
 
-The service is not exposed outside Kubernetes. Whithin the cluster it
+The service is not exposed outside Kubernetes. Within the cluster it
 can be accessed via `http://localhost:80/kampuni/v1/`
 
 ## Docker

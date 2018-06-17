@@ -1,9 +1,9 @@
-FROM maven:3-jdk-9-slim
+FROM maven:3-jdk-10-slim
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN mvn clean package assembly:single && unzip -d target target/*.zip
 
-FROM openjdk:9-jre-slim
+FROM openjdk:10-jre-slim
 RUN mkdir /app
 WORKDIR /app
 EXPOSE 8080:8080

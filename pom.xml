@@ -19,15 +19,15 @@
   </repositories>
 
   <properties>
-    <undertow.version>1.4.21.Final</undertow.version>
-    <jersey.version>2.26</jersey.version>
-    <hk.locator.version>2.5.0-b60</hk.locator.version>
-    <jackson.version>2.9.3</jackson.version>
+    <undertow.version>1.4.25.Final</undertow.version>
+    <jersey.version>2.27</jersey.version>
+    <hk.locator.version>2.5.0-b61</hk.locator.version>
+    <jackson.version>2.9.6</jackson.version>
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-    <com.neovisionaries.nv-i18n.version>1.22</com.neovisionaries.nv-i18n.version>
-    <com.google.guava.version>23.6-jre</com.google.guava.version>
-    <maven.compiler.target>9</maven.compiler.target>
-    <maven.compiler.source>9</maven.compiler.source>
+    <com.neovisionaries.nv-i18n.version>1.23</com.neovisionaries.nv-i18n.version>
+    <com.google.guava.version>25.1-jre</com.google.guava.version>
+    <maven.compiler.target>10</maven.compiler.target>
+    <maven.compiler.source>10</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -122,7 +122,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.0.2</version>
+      <version>5.2.0</version>
     </dependency>
   </dependencies>
 
@@ -164,7 +164,7 @@
       <plugin>
         <groupId>org.owasp</groupId>
         <artifactId>dependency-check-maven</artifactId>
-        <version>3.0.2</version>
+        <version>3.2.1</version>
         <configuration>
           <suppressionFile>cve-suppress.xml</suppressionFile>
         </configuration>
