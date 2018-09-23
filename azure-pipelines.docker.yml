@@ -7,12 +7,12 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  imageName: 'kampuni:$(build.buildId)'
+  imageName: '$(dockerId)/kampuni:$(build.buildId)'
 
 steps:
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
 - script: |
     docker login -u $(dockerId) -p $(dockerPassword)
-    docker push $(dockerId)/$(imageName)
-  displayName: 'docker build'  
+    docker push $(imageName)
+  displayName: 'docker push'  
