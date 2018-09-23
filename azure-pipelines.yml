@@ -14,5 +14,5 @@ steps:
   displayName: 'docker build'
 - script: |
     docker login -u $(dockerId) -p $(dockerPassword)
-    docker push $(imageName):$(build.SourceBranchName) -t $(imageName):latest
+    docker push $(imageName):$(build.SourceBranchName) $(imageName):latest
   displayName: 'docker push'
