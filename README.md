@@ -56,5 +56,5 @@ To build locally:
 docker build .
 ```
 
-To build without Docker, Java 9 and Maven is required. See the
+To build without Docker then Java 11 and Maven is required. See the
 Dockerfile for applicable command.
