@@ -7,7 +7,7 @@ cache:
 build:
   stage: build
   script:
-    - 'mvn build'
+    - 'mvn compile'
 
 test:
   stage: test
