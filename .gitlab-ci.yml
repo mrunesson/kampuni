@@ -33,6 +33,8 @@ verify:
   stage: verify
   script:
   - mvn $MAVEN_CLI_OPTS dependency-check:check
+  only:
+  - master
   artifacts:
     paths:
     - target/dependency-check-report.html
@@ -41,4 +43,6 @@ package:
   stage: package
   script:
   - mvn $MAVEN_CLI_OPTS -Djib.to.auth.username=gitlab-ci-token -Djib.to.auth.password=$CI_JOB_TOKEN package jib:build
+  only:
+  - master
 
