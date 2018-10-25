@@ -33,8 +33,6 @@ verify:
   stage: verify
   script:
   - mvn $MAVEN_CLI_OPTS dependency-check:check
-  only:
-  - master
   artifacts:
     paths:
     - target/dependency-check-report.html
@@ -43,5 +41,4 @@ package:
   stage: package
   script:
   - mvn $MAVEN_CLI_OPTS jib:build
-  only:
-  - master
+
