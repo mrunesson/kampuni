@@ -7,6 +7,13 @@ variables:
 cache:
   paths:
    - .m2/repository/
+   - target/jib-cache/
+
+stages:
+  - build
+  - test
+  - verify
+  - package
 
 build:
   stage: build
@@ -21,4 +28,20 @@ test:
     reports:
       junit:
       - target/surefire-reports/TEST-*.xml
-      
+
+verify:
+  stage: verify
+  script:
+  - mvn $MAVEN_CLI_OPTS dependency-check:check
+  only:
+  - master
+  artifacts:
+    paths:
+    - target/dependency-check-report.html
+
+package:
+  stage: package
+  script:
+  - mvn $MAVEN_CLI_OPTS jib:build
+  only:
+  - master
