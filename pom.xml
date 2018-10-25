@@ -175,6 +175,32 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>0.9.13</version>
+        <configuration>
+          <from>
+            <image>openjdk:11-jre-slim</image>
+          </from>
+          <to>
+            <image>magru/kampuni</image>
+            <tags>
+              <tag>jib</tag>
+            </tags>
+          </to>
+          <container>
+            <ports>
+              <port>8080</port>
+            </ports>
+            <jvmFlags>
+              <jvmFlag>--illegal-access=deny</jvmFlag>
+              <jvmFlag>-Djava.util.logging.config.file=logging.properties</jvmFlag>
+            </jvmFlags>
+          </container>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

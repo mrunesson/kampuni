@@ -48,7 +48,7 @@ curl --header "Accept: application/json" localhost:8080/kampuni/v1/
 # Build
 
 Head of master branch and release tags are automatically build 
-by Docker hubs automated builds.
+by Azure automated builds.
 
 To build locally: 
 
@@ -56,5 +56,9 @@ To build locally:
 docker build .
 ```
 
-To build without Docker then Java 11 and Maven is required. See the
-Dockerfile for applicable command.
+To buld without having to use Docker and to do a faster build, one may use Googles jib. In 
+this case one need maven installed on the machine.
+
+```
+mvn jib:build
+```
