@@ -2,7 +2,7 @@ image: maven:3-jdk-11-slim
 
 cache:
   paths:
-    - /root/.m2
+    - ~/.m2
 
 build:
   stage: build
@@ -17,4 +17,4 @@ test:
     reports:
       junit:
         - target/surefire-reports/TEST-*.xml
-        - taqrget/dependency-check-report.html
+        - target/dependency-check-report.html
