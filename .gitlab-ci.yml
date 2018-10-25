@@ -2,14 +2,19 @@ image: maven:3-jdk-11-slim
 
 cache:
   paths:
-    - .m2/repository
+    - /root/.m2
 
 build:
   stage: build
   script:
-    - 'mvn compile'
+    - mvn compile
 
 test:
   stage: test
   script:
-  - 'mvn test'
+    - mvn verify
+  artifacts:
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+        - taqrget/dependency-check-report.html
