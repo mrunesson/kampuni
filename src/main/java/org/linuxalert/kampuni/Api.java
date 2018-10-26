@@ -1,5 +1,6 @@
 package org.linuxalert.kampuni;
 
+import io.prometheus.client.Counter;
 import org.linuxalert.kampuni.model.Result;
 
 import javax.ws.rs.GET;
@@ -14,10 +15,12 @@ import java.util.Objects;
 public class Api {
 
   private static final AssortmentService ASSORTMENT_SERVICE = AssortmentService.getInstance();
+  static final Counter requests = Counter.build().name("requests_total").help("Total requests.").register();
 
   @GET
   @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
   public Response getAll() {
+    requests.inc();
     return Response.status(Response.Status.OK).entity(ASSORTMENT_SERVICE.getAll()).build();
   }
 
@@ -25,6 +28,7 @@ public class Api {
   @Path("{id}")
   @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
   public Response getId(@PathParam("id") String id) {
+    requests.inc();
     if (Objects.isNull(id) || id.isEmpty()) {
       return Response.status(Response.Status.BAD_REQUEST).build();
     }
