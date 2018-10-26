@@ -19,13 +19,15 @@
   </repositories>
 
   <properties>
-    <undertow.version>2.0.13.Final</undertow.version>
+    <undertow.version>2.0.14.Final</undertow.version>
     <jersey.version>2.27</jersey.version>
     <hk.locator.version>2.5.0-b62</hk.locator.version>
     <jackson.version>2.9.7</jackson.version>
     <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
     <com.neovisionaries.nv-i18n.version>1.23</com.neovisionaries.nv-i18n.version>
-    <com.google.guava.version>26.0-jre</com.google.guava.version>
+    <com.google.guava.version>27.0-jre</com.google.guava.version>
+    <io.prometheus.version>0.5.0</io.prometheus.version>
+
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -124,10 +126,33 @@
     </dependency>
 
 
+    <!-- Prometheus monitoring -->
+    <!-- The client -->
+    <dependency>
+      <groupId>io.prometheus</groupId>
+      <artifactId>simpleclient</artifactId>
+      <version>0.5.0</version>
+    </dependency>
+    <!-- Hotspot JVM metrics-->
+    <dependency>
+      <groupId>io.prometheus</groupId>
+      <artifactId>simpleclient_hotspot</artifactId>
+      <version>0.5.0</version>
+    </dependency>
+    <!-- Exposition HTTPServer-->
+    <dependency>
+      <groupId>io.prometheus</groupId>
+      <artifactId>simpleclient_servlet</artifactId>
+      <version>0.5.0</version>
+    </dependency>
+
+
+    <!-- Test dependencies -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>5.3.1</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 

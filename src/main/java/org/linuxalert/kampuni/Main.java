@@ -1,5 +1,7 @@
 package org.linuxalert.kampuni;
 
+import io.prometheus.client.exporter.MetricsServlet;
+import io.prometheus.client.hotspot.DefaultExports;
 import io.undertow.Undertow;
 import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
@@ -28,10 +30,14 @@ public class Main {
             .setLoadOnStartup(1)
             .addInitParam("javax.ws.rs.Application", JerseyApp.class.getName())
             .addInitParam("jersey.config.server.provider.packages", "com.jersey.jaxb")
-            .addMapping("/kampuni/*"));
-
+            .addMapping("/kampuni/*"))
+        .addServlets(servlet("metricsServlet", MetricsServlet.class)
+            .setLoadOnStartup(1)
+            .addMapping("/kampuni/status/metrics"));
     DeploymentManager manager = Servlets.defaultContainer().addDeployment(servletBuilder);
     manager.deploy();
+
+    DefaultExports.initialize();
 
     server = Undertow
         .builder()
