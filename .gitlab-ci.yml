@@ -42,4 +42,4 @@ verify:
 package:
   stage: package
   script:
-  - mvn $MAVEN_CLI_OPTS -Djib.to.auth.username=gitlab-ci-token -Djib.to.auth.password=$CI_JOB_TOKEN -Dimage.tags=$CI_COMMIT_REF_NAME,$CI_PIPELINE_ID  package jib:build
+  - mvn $MAVEN_CLI_OPTS -Djib.to.auth.username=gitlab-ci-token -Djib.to.auth.password=$CI_JOB_TOKEN -Dimage.tags=$CI_COMMIT_REF_SLUG,build-$CI_PIPELINE_ID  package jib:build
