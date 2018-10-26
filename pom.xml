@@ -184,9 +184,6 @@
           </from>
           <to>
             <image>ccr.ctrl-c.liu.se/runeson/kampuni</image>
-            <tags>
-              <tag>jib</tag>
-            </tags>
           </to>
           <container>
             <ports>
