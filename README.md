@@ -36,7 +36,7 @@ can be accessed via `http://localhost:80/kampuni/v1/`
 It is possible to run directly in Docker using:
 
 ```
-docker docker run -P --rm magru/kampuni:latest 
+docker docker run -P --rm registry.gitlab.com/m.runesson/kampun:master 
 ```
 
 To access the service, in another window do:
