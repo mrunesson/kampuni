@@ -27,6 +27,7 @@
     <com.neovisionaries.nv-i18n.version>1.23</com.neovisionaries.nv-i18n.version>
     <com.google.guava.version>27.0-jre</com.google.guava.version>
     <io.prometheus.version>0.5.0</io.prometheus.version>
+    <junit.jupiter.version>5.3.1</junit.jupiter.version>
 
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
@@ -152,8 +153,20 @@
     <!-- Test dependencies -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.3.1</version>
+      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -198,6 +211,11 @@
             </jvmFlags>
           </container>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.0</version>
       </plugin>
     </plugins>
   </build>
