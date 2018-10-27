@@ -185,7 +185,7 @@
             <image>openjdk:11-jre-slim</image>
           </from>
           <to>
-            <image>registry.gitlab.com/runeson/kampuni</image>
+            <image>registry.gitlab.com/m.runeson/kampuni</image>
             <tags>${image.tags}</tags>
           </to>
           <container>
