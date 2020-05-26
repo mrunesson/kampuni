@@ -36,7 +36,7 @@ can be accessed via `http://localhost:80/kampuni/v1/`
 It is possible to run directly in Docker using:
 
 ```
-docker docker run -P --rm registry.gitlab.com/m.runesson/kampun:master 
+docker run -p 8080:8080 --rm registry.gitlab.com/m.runesson/kampuni:master 
 ```
 
 To access the service, in another window do:
@@ -46,15 +46,6 @@ curl --header "Accept: application/json" localhost:8080/kampuni/v1/
 
 
 # Build
-
-Head of master branch and release tags are automatically build 
-by Azure automated builds.
-
-To build locally: 
-
-```
-docker build .
-```
 
 To buld without having to use Docker and to do a faster build, one may use Googles jib. In 
 this case one need maven installed on the machine.
