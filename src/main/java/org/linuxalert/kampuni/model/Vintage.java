@@ -1,7 +1,5 @@
 package org.linuxalert.kampuni.model;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
 import java.util.Optional;
 
 public class Vintage {
@@ -37,15 +35,15 @@ public class Vintage {
     return type == VintageType.YEAR;
   }
 
-  @JsonValue
-  public String getJsonValue() {
+  private enum VintageType {
+    YEAR, NA
+  }
+
+  @Override
+  public String toString() {
     if (type == VintageType.YEAR) {
       return year.toString();
     }
     return "NV";
-  }
-
-  private enum VintageType {
-    YEAR, NA
   }
 }

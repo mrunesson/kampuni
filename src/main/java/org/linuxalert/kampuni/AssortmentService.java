@@ -34,11 +34,11 @@ public class AssortmentService {
   public static synchronized AssortmentService getInstance() {
     if (Objects.isNull(instance)) {
       instance = new AssortmentService();
-      instance.updateCache();
+      //instance.updateCache();
       scheduler = Executors.newScheduledThreadPool(1);
       // TODO: Base initial delay on lastUpdate
       scheduler.scheduleWithFixedDelay(() -> instance.updateCache(),
-          1, 1, TimeUnit.DAYS );
+          0, 1, TimeUnit.DAYS );
     }
     return instance;
   }
@@ -48,7 +48,11 @@ public class AssortmentService {
   }
 
   public boolean health() {
-    return lastCheck.isAfter(lastCheck.minusHours(25));
+    if (lastCheck == null) {
+     return false;
+    } else {
+      return lastCheck.isAfter(lastCheck.minusHours(25));
+    }
   }
 
   private AssortmentService() {

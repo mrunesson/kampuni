@@ -7,7 +7,6 @@ variables:
 cache:
   paths:
    - .m2/repository/
-   - target/jib-cache/
 
 stages:
   - build
@@ -31,6 +30,7 @@ test:
 
 verify:
   stage: verify
+  allow_failure: true
   script:
   - mvn $MAVEN_CLI_OPTS dependency-check:check
   only:
@@ -42,4 +42,6 @@ verify:
 package:
   stage: package
   script:
-  - mvn $MAVEN_CLI_OPTS -Djib.to.auth.username=gitlab-ci-token -Djib.to.auth.password=$CI_JOB_TOKEN -Dimage.tags=$CI_COMMIT_REF_SLUG,build-$CI_PIPELINE_ID  package jib:build
+  - mvn $MAVEN_CLI_OPTS -Dquarkus.container-image.username=gitlab-ci-token -Dquarkus.container-image.password=$CI_JOB_TOKEN -Dquarkus.container-image.registry=$CI_REGISTRY -Dquarkus.container-image.group=$CI_PROJECT_NAMESPACE -Dquarkus.container-image.tag=$CI_COMMIT_REF_SLUG,build-$CI_PIPELINE_ID -Dquarkus.container-image.build=true -Dquarkus.container-image.push=true package
+  only:
+    - master

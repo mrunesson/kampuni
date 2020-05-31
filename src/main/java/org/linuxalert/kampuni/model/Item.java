@@ -1,18 +1,18 @@
 package org.linuxalert.kampuni.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.neovisionaries.i18n.CountryCode;
+import org.linuxalert.kampuni.model.serializer.VintageSerializer;
 
+import javax.json.bind.annotation.JsonbTypeSerializer;
 import java.util.List;
 import java.util.Set;
 
-
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Item {
 
   private String name;
   private String subName;
   private Double alcoholPercent;
+  @JsonbTypeSerializer(VintageSerializer.class)
   private Vintage vintage;
   private String supplier;
   private String producer;
@@ -126,7 +126,7 @@ public class Item {
   }
 
   public Set<String> getTags() {
-    return tags;
+    return tags.isEmpty()?null:tags;
   }
 
   public void setRegion(List<String> region) {
@@ -134,6 +134,6 @@ public class Item {
   }
 
   public List<String> getRegion() {
-    return region;
+    return region.isEmpty()?null:region;
   }
 }

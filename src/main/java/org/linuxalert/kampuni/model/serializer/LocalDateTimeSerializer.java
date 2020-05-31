@@ -1,27 +1,13 @@
 package org.linuxalert.kampuni.model.serializer;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-
-import java.io.IOException;
+import javax.json.bind.serializer.JsonbSerializer;
+import javax.json.bind.serializer.SerializationContext;
 import java.time.LocalDateTime;
 
-public class LocalDateTimeSerializer extends StdSerializer<LocalDateTime> {
-
-  public LocalDateTimeSerializer() {
-    this(null);
-  }
-
-  public LocalDateTimeSerializer(Class t) {
-    super(t);
-  }
+public class LocalDateTimeSerializer implements JsonbSerializer<LocalDateTime> {
 
   @Override
-  public void serialize (LocalDateTime value, JsonGenerator gen, SerializerProvider arg2)
-      throws IOException, JsonProcessingException {
-    gen.writeString(value.toString());
+  public void serialize(LocalDateTime obj, javax.json.stream.JsonGenerator generator, SerializationContext ctx) {
+    generator.write(obj.toString());
   }
-
 }

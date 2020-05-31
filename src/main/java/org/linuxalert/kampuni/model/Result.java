@@ -1,8 +1,8 @@
 package org.linuxalert.kampuni.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.linuxalert.kampuni.model.serializer.LocalDateTimeSerializer;
 
+import javax.json.bind.annotation.JsonbTypeSerializer;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -20,7 +20,7 @@ public class Result {
     return items;
   }
 
-  @JsonSerialize(using = LocalDateTimeSerializer.class)
+  @JsonbTypeSerializer(LocalDateTimeSerializer.class)
   public LocalDateTime getUpdateTime() {
     return updateTime;
   }

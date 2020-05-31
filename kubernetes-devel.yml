@@ -7,19 +7,20 @@ spec:
   selector:
     app: kampuni
   ports:
-  - protocol: TCP
-    port: 8080
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
 ---
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kampuni-deployment
   labels:
     app: kampuni
-    version: v0.1.2
 spec:
   replicas: 1
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: kampuni
@@ -27,16 +28,16 @@ spec:
     metadata:
       labels:
         app: kampuni
-        version: v0.1.2
     spec:
       containers:
       - name: kampuni
-        image: magru/kampuni:v0.1.2
+        image: kampuni:devel
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
         livenessProbe:
           httpGet:
-            path: /kampuni/status/health
+            path: /status/health
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 1
@@ -44,7 +45,7 @@ spec:
           failureThreshold: 3
         readinessProbe:
           httpGet:
-            path: /kampuni/status/ready
+            path: /status/ready
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 1

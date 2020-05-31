@@ -314,6 +314,9 @@ private static final Map<String, Set<String>> cleanVarugruppMap = ImmutableMap.<
   }
 
   private Optional<Artiklar> getData() throws JAXBException {
-    return getStream().flatMap(this::unmarshallArtiklar);
+    LOGGER.log(System.Logger.Level.INFO, "Start fetching data.");
+    Optional<Artiklar> data = getStream().flatMap(this::unmarshallArtiklar);
+    LOGGER.log(System.Logger.Level.INFO, "Done fetching data.");
+    return data;
   }
 }

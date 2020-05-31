@@ -13,43 +13,36 @@ Usage of Kampuni most follow regulation regarding
 alcohol etc for the country where it is used.  
 
 
-# Run
-
-## Kubernetes
-
-Kampuni is intended to run within Kubernetes. Deployment of latest 
-release is done with:
-```
-kubernetes apply -f kubernetes-release.yml
-```
-
-Deployment of head of master is done with:
-```
-kubernetes apply -f kubernetes-latest.yml
-```
-
-The service is not exposed outside Kubernetes. Within the cluster it
-can be accessed via `http://localhost:80/kampuni/v1/`
+# Build & Run
 
 ## Docker
-
-It is possible to run directly in Docker using:
-
+Build a container and run with Docker:
 ```
-docker run -p 8080:8080 --rm registry.gitlab.com/m.runesson/kampuni:master 
+./mvnw clean package -Dquarkus.container-image.build=true
+docker run -p 8080:8080 kampuni:devel
 ```
-
 To access the service, in another window do:
 ```
-curl --header "Accept: application/json" localhost:8080/kampuni/v1/
+curl --header "Accept: application/json" localhost:8080/v1/
 ```
 
-
-# Build
-
-To buld without having to use Docker and to do a faster build, one may use Googles jib. In 
-this case one need maven installed on the machine.
-
+## Kubernetes
+If you instead want to run on a local Minikube:
 ```
-mvn jib:build
+eval $(minikube -p minikube docker-env)
+./mvnw clean package -Dquarkus.container-image.build=true
+kubectl apply -f kubernetes-devel.yml
+```
+You can access the service via the following command:
+`curl -i --header "Accept: application/json" $(minikube ip):$(kubectl get service kampuni -o jsonpath='{.spec.ports[0].nodePort}')/v1/`
+
+## Plain Java
+Build a fat jar and run with Java without containers.
+```
+./mvnw clean package
+java -jar target/kampuni-1.0.0-SNAPSHOT-runner.jar
+```
+To access the service, in another window do:
+```
+curl --header "Accept: application/json" localhost:8080/v1/
 ```
