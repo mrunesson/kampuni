@@ -42,6 +42,6 @@ verify:
 package:
   stage: package
   script:
-  - mvn $MAVEN_CLI_OPTS -Dquarkus.container-image.username=gitlab-ci-token -Dquarkus.container-image.password=$CI_JOB_TOKEN -Dquarkus.container-image.registry=$CI_REGISTRY -Dquarkus.container-image.group=$CI_PROJECT_NAMESPACE -Dquarkus.container-image.tag=build-$CI_PIPELINE_ID -Dquarkus.container-image.build=true -Dquarkus.container-image.push=true package
+  - mvn $MAVEN_CLI_OPTS -Dquarkus.container-image.username=gitlab-ci-token -Dquarkus.container-image.password=$CI_JOB_TOKEN -Dquarkus.container-image.registry=$CI_REGISTRY -Dquarkus.container-image.group=$CI_PROJECT_NAMESPACE -Dquarkus.container-image.tag=build-$CI_PIPELINE_ID -Dquarkus.container-image.additional-tags=$CI_COMMIT_REF_SLUG -Dquarkus.container-image.build=true -Dquarkus.container-image.push=true package
   only:
     - master
