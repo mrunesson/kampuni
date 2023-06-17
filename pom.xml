@@ -6,7 +6,7 @@
   <artifactId>kampuni</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
-    <com.google.guava.version>29.0-jre</com.google.guava.version>
+    <com.google.guava.version>32.0.0-jre</com.google.guava.version>
     <com.neovisionaries.nv-i18n.version>1.27</com.neovisionaries.nv-i18n.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <image.tags>develop</image.tags>
