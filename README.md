@@ -1,3 +1,6 @@
+This project is archived. Systembolaget have changed its way
+making data avaliable which make this repo invalid.
+
 Kampuni is a simple REST service providing the assortment of
 the Swedish alcohol monopoly stores Systembolaget. It cache
 the assortment once a day from files published by Systembolaget.
